@@ -1,0 +1,18 @@
+[user]
+	name = Marcel Beltz
+	email = marcel@beltz.info
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	up = rebase
+	ci = commit
+
+[core]
+    editor = vim
+

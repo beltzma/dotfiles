@@ -38,6 +38,7 @@ function vim_install() {
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         vim +PluginInstall +qall
     fi
+}
 
 case `uname` in
     Darwin)
@@ -84,4 +85,3 @@ for file in $files; do
 done
 
 vim_install
-

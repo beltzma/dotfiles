@@ -3,7 +3,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles/bak
-files="vimrc vim gitconfig tmux.conf"
+files="vimrc vim gitconfig tmux.conf zshrc"
 
 function brew_install() {
     echo "brew wird nachinstalliert"
@@ -25,7 +25,11 @@ function brew_depend() {
         fi
     done
 
+}
+
+function oh_my_zsh_install() {
     if [ ! -d ~/.oh-my-zsh ]; then
+        echo "installing oh-my-zsh ..."
         git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     fi
 }
@@ -56,7 +60,8 @@ case `uname` in
         done
         ;;
 esac
-        
+
+oh_my_zsh_install
 
 echo "Creating $olddir for backup ..."
 mkdir -p $olddir

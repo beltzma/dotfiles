@@ -3,7 +3,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles/bak
-files="vimrc vim gitconfig tmux.conf zshrc"
+files="vimrc gitconfig tmux.conf zshrc"
 
 function brew_install() {
     echo "brew wird nachinstalliert"
@@ -74,6 +74,7 @@ echo "Creating $olddir for backup ..."
 mkdir -p $olddir
 
 cd $dir
+mv ~/.vim $olddir/vim
 
 for file in $files; do
     if [ -f  ~/.$file ]; then

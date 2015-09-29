@@ -53,9 +53,9 @@ case `uname` in
             echo "sudo nicht installiert"
             exit
         fi
-        for PKG in wget tmux zsh; do
+        for PKG in wget tmux zsh vim; do
             /usr/local/bin/sudo pkg query %n $PKG 
-	    if [ $? -ne 0 ]; then
+            if [ $? -ne 0 ]; then
                 /usr/local/bin/sudo pkg install -y $PKG
             fi
         done

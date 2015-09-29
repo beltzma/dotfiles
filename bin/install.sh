@@ -2,7 +2,7 @@
 #
 
 dir=~/dotfiles
-olddir=~/dotfiles/bak
+olddir=~/dotfiles/bak-$( date +%d-%m-%Y-%H-%M )
 files="vimrc gitconfig tmux.conf zshrc"
 
 function brew_install() {

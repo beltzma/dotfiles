@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 
 dir=~/dotfiles
@@ -50,8 +50,9 @@ case `uname` in
             exit
         fi
         for PKG in wget tmux zsh; do
-            if [ /usr/local/bin/sudo pkg query %n $PKG ]; then
-                /usr/local/bin/sudo pkg install $PKG
+            /usr/local/bin/sudo pkg query %n $PKG 
+	    if [ $? -ne 0 ]; then
+                /usr/local/bin/sudo pkg install -y $PKG
             fi
         done
         ;;

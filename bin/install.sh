@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 
 dir=~/dotfiles
@@ -39,6 +39,21 @@ case `uname` in
             echo "nicht Redhat basiertes System"
             echo "Bitte entsprechende Pakete installieren!"
         fi
+        ;;
+    FreeBSD)
+        if [ ! -x /usr/sbin/pkg ]; then
+            echo "FreeBSD scheinbar nicht vollständig installiert"
+            exit
+        fi
+        if [ ! -x /usr/local/bin/sudo ]; then
+            echo "sudo nicht installiert"
+            exit
+        fi
+        for PKG in wget tmux zsh; do
+            if [ /usr/local/bin/sudo pkg query %n $PKG ]; then
+                /usr/local/bin/sudo pkg install $PKG
+            fi
+        done
         ;;
 esac
         

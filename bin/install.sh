@@ -33,6 +33,11 @@ function oh_my_zsh_install() {
         git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     fi
 }
+function vim_install() {
+    if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        vim +PluginInstall +qall
+    fi
 
 case `uname` in
     Darwin)
@@ -78,4 +83,5 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+vim_install
 

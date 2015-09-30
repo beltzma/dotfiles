@@ -10,13 +10,19 @@ function brew_install() {
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
+function brew_update() {
+    brew update
+    brew upgrade `brew outdated`
+}
+
+
 function brew_depend() {
     if [ ! -x /usr/local/bin/brew ]; then
         brew_install
     fi
     echo "brew aktualisieren..."
-    brew update
-    for pkg in wget tmux zsh reattach-to-user-namespace; do
+    brew_update
+    for pkg in wget tmux zsh reattach-to-user-namespace ssh-copy-id; do
         if brew list -1 | grep -q "^${pkg}\$"; then
             echo "Package '$pkg' is installed"
         else
@@ -42,7 +48,7 @@ function vim_install() {
 
 case `uname` in
     Darwin)
-        brew_depend
+       brew_depend
         ;;
     Linux)
         if [ ! -x /usr/bin/yum ]; then 

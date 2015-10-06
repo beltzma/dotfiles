@@ -55,6 +55,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-zsh config
+#
+
+CRUNCH_GIT_CLEAN_COLOR="%{$fg[green]%}"
+CRUNCH_GIT_DIRTY_COLOR="%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" $CRUNCH_GIT_CLEAN_COLOR✓"
 ZSH_THEME_GIT_PROMPT_DIRTY=" $CRUNCH_GIT_DIRTY_COLOR✗"
 

@@ -49,7 +49,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/usr/local/gnat/bin/"
 export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -78,6 +78,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias ___="source ~/.zshrc"
 
 export PIP_REQUIRE_VIRTUALENV=true
 gpip(){

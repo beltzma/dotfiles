@@ -57,10 +57,11 @@ source $ZSH/oh-my-zsh.sh
 # oh-my-zsh config
 #
 
-CRUNCH_GIT_CLEAN_COLOR="%{$fg[green]%}"
-CRUNCH_GIT_DIRTY_COLOR="%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" $CRUNCH_GIT_CLEAN_COLOR✓"
-ZSH_THEME_GIT_PROMPT_DIRTY=" $CRUNCH_GIT_DIRTY_COLOR✗"
+BELTZ_GIT_CLEAN_COLOR="%{$fg[green]%}"
+BELTZ_GIT_DIRTY_COLOR="%{$fg[red]%}"
+ZSH_THEME_GIT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}) $BELTZ_GIT_CLEAN_COLOR✓"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}) $BELTZ_GIT_DIRTY_COLOR✗"
 
 
 # You may need to manually set your language environment

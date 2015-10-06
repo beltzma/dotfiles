@@ -55,6 +55,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-zsh config
+ZSH_THEME_GIT_PROMPT_CLEAN=" $CRUNCH_GIT_CLEAN_COLOR✓"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $CRUNCH_GIT_DIRTY_COLOR✗"
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

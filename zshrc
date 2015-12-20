@@ -95,5 +95,6 @@ alias ___="source ~/.zshrc"
 export PIP_REQUIRE_VIRTUALENV=true
 gpip(){
        PIP_REQUIRE_VIRTUALENV="" pip "$@"
-   }
+}
 
+export HOMEBREW_GITHUB_API_TOKEN=88513011c4cf3d073a8c0a2ba8aae5ed157f767f

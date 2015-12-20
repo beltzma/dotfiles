@@ -26,6 +26,8 @@ set sidescrolloff=0
  
 " Change buffer without save
 set hidden
+set autowrite     " Automatically :write before running commands
+set autoread      " Reload files changed outside vim
 
 " highlight the status bar when in insert mode
 if version >= 700
@@ -59,6 +61,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'kien/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -123,6 +126,23 @@ set undoreload=10000        " number of lines to save for undo
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py"
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+"Toggle relative numbering, and set to absolute on loss of focus or insert
+mode
+set rnu
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
 
 " NERDtree
 autocmd StdinReadPre * let s:std_in=1

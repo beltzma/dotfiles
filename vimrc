@@ -29,11 +29,15 @@ set hidden
 set autowrite     " Automatically :write before running commands
 set autoread      " Reload files changed outside vim
 
+" Where splits will open
+set splitbelow
+set splitright
+
 " highlight the status bar when in insert mode
 if version >= 700
     if has("gui_running")
         au InsertEnter * hi StatusLine guifg=black guibg=green
-        au InsertLeave * hi StatusLine guibg=black guifg=grey
+        au InsertLeave *q hi StatusLine guibg=black guifg=grey
     else
         au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
         au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12

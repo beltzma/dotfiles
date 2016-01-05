@@ -64,7 +64,12 @@ case `uname` in
     Linux)
         if [ -x /usr/bin/yum ]; then 
             REDHAT=true
+            PKG_MGT=yum
+            if [ -x /usr/bin/dnf ]; then # Fedora >= 22
+                PKG_MGT=dnf
+            fi
             /usr/bin/sudo yum -y groupinstall "Development Tools"
+            /usr/bin/sudo yum -y install gcc-c++
             /usr/bin/sudo yum -y install python-devel 
         fi
         for PKG in wget tmux zsh vim cmake; do

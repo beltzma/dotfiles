@@ -43,18 +43,33 @@ function vim_install() {
     if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         vim +PluginInstall +qall
+        cd ~/.vim/bundle/YouCompleteMe
+        ./install.py --clang-completer
     fi
 }
 
+function linux_pkg_install {
+    if [ REDHAT ]; then
+        /usr/bin/sudo yum list installed $1 
+        if [ $? -ne 0 ]; then
+            /usr/bin/sudo yum install -y $1
+        fi
+    fi
+
+}
 case `uname` in
     Darwin)
        brew_depend
         ;;
     Linux)
-        if [ ! -x /usr/bin/yum ]; then 
-            echo "nicht Redhat basiertes System"
-            echo "Bitte entsprechende Pakete installieren!"
+        if [ -x /usr/bin/yum ]; then 
+            REDHAT=true
+            /usr/bin/sudo yum -y groupinstall "Development Tools"
+            /usr/bin/sudo yum -y install python-devel 
         fi
+        for PKG in wget tmux zsh vim cmake; do
+            linux_pkg_install $PKG
+        done
         ;;
     FreeBSD)
         if [ ! -x /usr/sbin/pkg ]; then

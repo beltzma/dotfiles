@@ -45,7 +45,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx brew)
+plugins=(git osx brew wd)
 
 # User configuration
 
@@ -59,6 +59,7 @@ source $ZSH/oh-my-zsh.sh
 
 BELTZ_GIT_CLEAN_COLOR="%{$fg[green]%}"
 BELTZ_GIT_DIRTY_COLOR="%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[red]%}"
 ZSH_THEME_GIT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}) $BELTZ_GIT_CLEAN_COLOR✓"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}) $BELTZ_GIT_DIRTY_COLOR✗"
@@ -94,5 +95,6 @@ alias ___="source ~/.zshrc"
 export PIP_REQUIRE_VIRTUALENV=true
 gpip(){
        PIP_REQUIRE_VIRTUALENV="" pip "$@"
-   }
+}
 
+export HOMEBREW_GITHUB_API_TOKEN=88513011c4cf3d073a8c0a2ba8aae5ed157f767f

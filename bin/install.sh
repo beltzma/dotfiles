@@ -49,10 +49,10 @@ function vim_install() {
 }
 
 function linux_pkg_install {
-    if [ REDHAT ]; then
-        /usr/bin/sudo yum list installed $1 
+    if [ $REDHAT ]; then
+        /usr/bin/sudo $PKG_MNT list installed $1 
         if [ $? -ne 0 ]; then
-            /usr/bin/sudo yum install -y $1
+            /usr/bin/sudo $PKG_MNT install -y $1
         fi
     fi
 
@@ -68,9 +68,9 @@ case `uname` in
             if [ -x /usr/bin/dnf ]; then # Fedora >= 22
                 PKG_MGT=dnf
             fi
-            /usr/bin/sudo yum -y groupinstall "Development Tools"
-            /usr/bin/sudo yum -y install gcc-c++
-            /usr/bin/sudo yum -y install python-devel 
+            /usr/bin/sudo $PKG_MNT -y groupinstall "Development Tools"
+            /usr/bin/sudo $PKG_MNT -y install gcc-c++
+            /usr/bin/sudo $PKG_MNT -y install python-devel 
         fi
         for PKG in wget tmux zsh vim cmake; do
             linux_pkg_install $PKG

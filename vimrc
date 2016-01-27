@@ -66,6 +66,8 @@ Bundle 'kien/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rking/ag.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
 
 call vundle#end()
 filetype plugin indent on
@@ -162,3 +164,4 @@ au BufWritePost .vimrc so ~/.vimrc
 " let g:airline_right_sep=''
 " let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 1
+let	g:airline#extensions#tabline#fnamemod = ':t'

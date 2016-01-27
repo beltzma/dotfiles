@@ -48,24 +48,32 @@ function vim_install() {
     fi
 }
 
+function linux_pkg_install {
+    if [ $REDHAT ]; then
+        /usr/bin/sudo $PKG_MGT list installed $1 
+        if [ $? -ne 0 ]; then
+            /usr/bin/sudo $PKG_MGT install -y $1
+        fi
+    fi
+
+}
 case `uname` in
     Darwin)
        brew_depend
         ;;
     Linux)
-        if [ ! -x /usr/bin/yum ]; then 
-            echo "nicht Redhat basiertes System"
-            echo "Bitte entsprechende Pakete installieren!"
-        fi
-        if [ ! -x /usr/bin/sudo ]; then
-            echo "sudo nicht installiert"
-            exit
-        fi
-        for PKG in wget tmux zsh vim; do
-            /usr/local/bin/sudo yum list installed $PKG 
-            if [ $? -ne 0 ]; then
-                /usr/local/bin/sudo yum install -y $PKG
+        if [ -x /usr/bin/yum ]; then 
+            REDHAT=true
+            PKG_MGT=yum
+            if [ -x /usr/bin/dnf ]; then # Fedora >= 22
+                PKG_MGT=dnf
             fi
+            /usr/bin/sudo $PKG_MGT -y groupinstall "Development Tools"
+            /usr/bin/sudo $PKG_MGT -y install gcc-c++
+            /usr/bin/sudo $PKG_MGT -y install python-devel 
+        fi
+        for PKG in wget tmux zsh vim cmake; do
+            linux_pkg_install $PKG
         done
         ;;
     FreeBSD)
